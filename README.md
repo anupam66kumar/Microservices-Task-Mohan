@@ -104,7 +104,42 @@ order-service-1 | Order service running on port 3002
 
 gateway-service-1 | Gateway service running on port 3003
 
-Place actual execution terminal screenshots or operational interface views under this section to visually prove local evaluation readiness.
+Placing actual execution terminal screenshots or operational interface views under this section to visually prove local evaluation readiness.
+
+<img width="1165" height="431" alt="image" src="https://github.com/user-attachments/assets/cc0d4125-4710-4c32-8707-e8ee5db33d27" />
+<img width="999" height="131" alt="image" src="https://github.com/user-attachments/assets/841b7c85-40c5-4c76-9f83-d725e0b700e5" />
+
+<img width="1327" height="171" alt="image" src="https://github.com/user-attachments/assets/e71766d9-c8a0-43c5-8367-d7e4545e6eb7" />
+
+## DockerFile
+
+	A. user-service
+	FROM node:18-alpine
+	WORKDIR /usr/src/app
+	COPY package*.json ./
+	RUN npm install
+	COPY . .
+	EXPOSE 3000
+	CMD ["node", "app.js"]
+
+	B. Product service
+	FROM node:18-alpine
+	WORKDIR /usr/src/app
+	COPY package*.json ./
+	RUN npm install
+	COPY . .
+	EXPOSE 3001
+	CMD ["node", "app.js"]
+
+	C. gateway-service
+	FROM node:18-alpine
+	WORKDIR /usr/src/app
+	COPY package*.json ./
+	RUN npm install
+	COPY . .
+	EXPOSE 3003
+	CMD ["node", "app.js"]
+
 
 ## Basic Troubleshooting Tips
 
