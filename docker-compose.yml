@@ -1,0 +1,47 @@
+version: '3.8'
+
+# Configure a shared network for isolated communication
+networks:
+  microservices-network:
+    driver: bridge
+
+services:
+  # 1. User Service
+  user-service:
+    build:
+      context: ./Microservices/user-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Maps host port 3000 to container port 3000
+    networks:
+      - microservices-network
+    environment:
+      - NODE_ENV=production
+
+  # 2. Product Service
+  product-service:
+    build:
+      context: ./Microservices/product-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"  # Maps host port 3001 to container port 3001
+    networks:
+      - microservices-network
+    environment:
+      - NODE_ENV=production
+
+  # 3. Gateway Service
+  gateway-service:
+    build:
+      context: ./Microservices/gateway-service
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"  # Maps host port 3003 to container port 3003
+    networks:
+      - microservices-network
+    environment:
+      - NODE_ENV=production
+    # Ensures backend services start up before the gateway tries to route traffic
+    depends_on:
+      - user-service
+      - product-service
