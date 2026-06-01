@@ -32,6 +32,10 @@ docker compose up -build
 
 <img width="1071" height="207" alt="image" src="https://github.com/user-attachments/assets/486efed4-c536-46a4-88e4-df73b630933f" />
 
+<img width="1834" height="537" alt="image" src="https://github.com/user-attachments/assets/96aeb77e-ceaa-4ed5-8961-cfbeb7e188a5" />
+
+<img width="1834" height="537" alt="image" src="https://github.com/user-attachments/assets/c3d2d185-6044-4fbf-9eff-bec33475d22f" />
+
 
 ## Services and Endpoints Verification
 
@@ -76,6 +80,17 @@ curl <http://localhost:3003/api/products>
 curl <http://localhost:3003/api/orders>
 
 <img width="1317" height="107" alt="image" src="https://github.com/user-attachments/assets/86af9b28-c02a-42f3-8fa7-01096174e943" />
+
+***Testing from within the container to another one***
+
+from gateway service container to product and user service container
+<img width="1832" height="481" alt="image" src="https://github.com/user-attachments/assets/8b34fe12-d9a3-49ff-b2dd-8a69cf172bf7" />
+
+from user service container to product and gateway service container
+<img width="1832" height="481" alt="image" src="https://github.com/user-attachments/assets/9c071862-23f0-444b-bb8a-3c5460ca371a" />
+
+from product service container to user and gateway service container
+<img width="1832" height="481" alt="image" src="https://github.com/user-attachments/assets/fa1ef65e-c764-4739-ba5c-218b59976c25" />
 
 
 ## Runtime Verification (Services Status)
